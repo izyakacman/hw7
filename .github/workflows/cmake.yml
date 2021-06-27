@@ -24,9 +24,8 @@ jobs:
     - run: sudo apt-get update && sudo apt-get install libboost-program-options-dev -y
     - run: sudo apt-get install libboost-filesystem-dev -y
     - run: sudo apt-get install libboost-regex-dev -y
-    - run: sudo apt-get install libboost-filesystem-dev -y
     #- run: sudo apt-get install libboost-crc-dev -y
-    - run: sudo apt-get install libboost-uuid-dev -y
+    #- run: sudo apt-get install libboost-uuid-dev -y
     - run: cmake .
     - run: cmake --build .
     - run: cmake --build . --target package
