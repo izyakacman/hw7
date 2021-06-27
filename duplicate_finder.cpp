@@ -46,8 +46,13 @@ void DuplicateFinder::Find()
                 {
                     if (vm_.count("mask"))
                     {
+                        string mask = vm_["mask"].as<string>();
+                        ReplaceAll(mask, ".", "[.]");
+                        ReplaceAll(mask, "*", ".*");
+                        ReplaceAll(mask, "?", ".");
+
                         boost::smatch what;
-                        boost::regex filter(vm_["mask"].as<string>());
+                        boost::regex filter(mask);
 
                         if (!boost::regex_match(itr->path().filename().string(), what, filter))
                             continue;
@@ -156,5 +161,16 @@ bool DuplicateFinder::CompareFiles(const path& file1, const path& file2)
         }
         else
             return true;
+    }
+}
+
+void DuplicateFinder::ReplaceAll(string& inout, string_view what, string_view with)
+{
+    size_t count = 0;
+    for (string::size_type pos = 0;
+        inout.npos != (pos = inout.find(what.data(), pos, what.length()));
+        pos += with.length(), ++count) 
+    {
+        inout.replace(pos, what.length(), with.data(), with.length());
     }
 }

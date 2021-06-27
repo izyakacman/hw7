@@ -18,7 +18,7 @@ int main(int argc, const char* argv[])
             ("edir,e", value<vector<string>>(), "directory excluded from scanning")
             ("level,l", value<bool>()->default_value(true), "scaning level")
             ("size,s", value<size_t>()->default_value(1), "minimum file size for scaning")
-            ("mask,m", value<std::string>()->default_value(".*"), "file mask")
+            ("mask,m", value<std::string>()->default_value("*"), "file mask")
             ("block,b", value<size_t>()->default_value(1024), "block size")
             ("hash", value<string>()->default_value("crc32"), "hash algorithm: crc32, md5");
 
