@@ -5,8 +5,8 @@
 #include "duolicate_finder.hpp"
 
 using namespace std;
-
 using namespace boost::program_options;
+
 int main(int argc, const char* argv[])
 {
     try 
